@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace ImportLeagueDominio
 {
-    class Area : IArea
+    public class Area : IArea
     {
         //
         private IRepositorio<entity.IAreaModel> _repositorio;

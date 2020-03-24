@@ -15,7 +15,7 @@ using Util = DatosAcceso;
 namespace ImportLeagueDominio
 {
     //Clase de negocio, posee un repositorio de su entidad
-    class Competition : ICompetition
+    public class Competition : ICompetition
     {
         //
         private IRepositorio<entity.ICompetitionModel> _repositorio;
