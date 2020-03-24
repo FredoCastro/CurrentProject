@@ -1,0 +1,6 @@
+namespace ImportLeagueWebAPI.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
