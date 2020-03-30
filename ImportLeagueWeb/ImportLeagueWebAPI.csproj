@@ -166,6 +166,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\ContainerConfig.cs" />
     <Compile Include="Controllers\IImportController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,7 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Common\" />
     <Folder Include="Views\Import\" />
   </ItemGroup>
   <ItemGroup>
