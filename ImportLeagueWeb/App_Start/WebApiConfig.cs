@@ -33,40 +33,40 @@ namespace ImportLeagueWebAPI
 
             //Dependency Injection
             //Enviamos como parametro los controladores con su tipo para mapearlos
-            Dictionary<ApiController, Type> apiControllers = new Dictionary<ApiController, Type>();
+            //Dictionary<ApiController, Type> apiControllers = new Dictionary<ApiController, Type>();
 
-            var _controllers = Assembly.Load(nameof(ImportLeagueWebAPI)).GetTypes().Where(t => t.Name.Contains("Controller")); //.Select( y => y = new KeyValuePair< new ImportController(), ImportController>());  //.Select(x=>x = new KeyValuePair<   ,t>());
+            //var _controllers = Assembly.Load(nameof(ImportLeagueWebAPI)).GetTypes().Where(t => t.Name.Contains("Controller")); //.Select( y => y = new KeyValuePair< new ImportController(), ImportController>());  //.Select(x=>x = new KeyValuePair<   ,t>());
 
-            foreach (var _controller in _controllers) {
+            //foreach (var _controller in _controllers) {
 
-                //Da error 
-                //var _apiController = (ApiController)Activator.CreateInstance(_controller.GetType(),true);
+            //    //Da error 
+            //    //var _apiController = (ApiController)Activator.CreateInstance(_controller.GetType(),true);
 
 
-                ApiController _apiController = null;
+            //    ApiController _apiController = null;
 
-                object[] param = new object[0];
-                Type[] typeParam = new Type[0];
+            //    object[] param = new object[0];
+            //    Type[] typeParam = new Type[0];
 
-                if (_controller.IsClass && _controller.BaseType.Name == "ApiController")
-                {
-                    _apiController = (ApiController)_controller.GetConstructor(typeParam).Invoke(param);
-                }
+            //    if (_controller.IsClass && _controller.BaseType.Name == "ApiController")
+            //    {
+            //        _apiController = (ApiController)_controller.GetConstructor(typeParam).Invoke(param);
+            //    }
 
-                if (_apiController != null)
-                {
-                    //Con interfaces
-                    //apiControllers.Add(_apiController, ObtenerInterfaceImplementada(_apiController));
+            //    if (_apiController != null)
+            //    {
+            //        //Con interfaces
+            //        //apiControllers.Add(_apiController, ObtenerInterfaceImplementada(_apiController));
 
-                    //Prueba con la clase del controlador
-                    apiControllers.Add(_apiController, _apiController.GetType());
-                }
-                //CrearParObjetoTipo(Activator.CreateInstance(_controller.GetType()));
-            }
+            //        //Prueba con la clase del controlador
+            //        apiControllers.Add(_apiController, _apiController.GetType());
+            //    }
+            //    //CrearParObjetoTipo(Activator.CreateInstance(_controller.GetType()));
+            //}
 
-            Assembly _executingAssembly = Assembly.GetExecutingAssembly();
+            //Assembly _executingAssembly = Assembly.GetExecutingAssembly();
 
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(ContainerConfig.Configure(apiControllers, _executingAssembly));
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(ContainerConfig.Configure());
 
         }
 

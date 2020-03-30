@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ImportLeagueWebAPI.BusinessLogic;
+using ImportLeagueDominio;
 using System.Reflection;
 using ImportLeagueWebAPI.Controllers;
 using AutoMapper;
-using ImportLeagueWebAPI.Models;
-using ImportLeagueWebAPI.DTObjects;
+using DatosEntidades;
+using DTOEntidades;
 
 namespace ImportLeagueWebAPI {
     public static class ContainerConfig {
@@ -24,13 +24,16 @@ namespace ImportLeagueWebAPI {
                 .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I" + t.Name)).SingleInstance();
 
             //Mapea las clases con la logica de cada Entidad
-            builder.RegisterAssemblyTypes(Assembly.Load(nameof(ImportLeagueWebAPI)))
-                .Where(t => t.Namespace.Contains("BusinessLogic"))
+            builder.RegisterAssemblyTypes(Assembly.Load(nameof(ImportLeagueDominio)))
+                .Where(t => t.Namespace.Contains("ImportLeagueDominio"))
                 .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I" + t.Name));
 
             //register individual controlllers manually.
+
+            builder.RegisterType<ImportController>().As<IImportController>().WithParameters( { typeof(IMapper), typeof(ICompetition)} );
+
             builder.RegisterType<ImportController>().InstancePerRequest();
-            builder.RegisterType<HomeController>().InstancePerRequest();
+            //builder.RegisterType<HomeController>().InstancePerRequest();
 
             //Configuracion circular de automapper y autofac
             builder.Register(ConfigureMapper).SingleInstance();
